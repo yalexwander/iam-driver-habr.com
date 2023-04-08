@@ -38,10 +38,10 @@ class HabrCatalogDriver extends AbstractCatalogDriver implements CatalogDriverIn
             $postDate = HabrDateParser::parseArticleDate(
                 $postContainer->findOne(".tm-article-datetime-published > time")->getAttribute("datetime")
             );
-            $postTitle = $postContainer->findOne(".tm-article-snippet__title")->text();
+            $postTitle = $postContainer->findOne("a.tm-title__link")->text();
             $postId = $postContainer->getAttribute("id");
 
-            $postURI = $postContainer->findOne("h2.tm-article-snippet__title>a")->getAttribute("href");
+            $postURI = $postContainer->findOne("a.tm-title__link")->getAttribute("href");
             $postURI = "https://" . $this->getCode() . $postURI;
 
             $msg = new SerializationMessage([
