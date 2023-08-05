@@ -17,7 +17,6 @@ require_once(__DIR__ . DIRECTORY_SEPARATOR . "lib" . DIRECTORY_SEPARATOR . "Habr
 
 class HabrCatalogDriver extends AbstractCatalogDriver implements CatalogDriverInterface
 {
-
     protected string $driverCode = "habr.com";
 
     public function queryCatalog(string $query, array $opts = []): array
@@ -63,12 +62,7 @@ class HabrCatalogDriver extends AbstractCatalogDriver implements CatalogDriverIn
 
     public function canHandleQuery(string $query, array $opts = []): bool
     {
-
         if (preg_match('/habr\.com/', $query)) {
-            return true;
-        }
-
-        if ($opts["catalog_default_driver"] === $this->getCode()) {
             return true;
         }
 
