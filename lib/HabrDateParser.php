@@ -4,7 +4,6 @@ namespace ItIsAllMail\Driver;
 
 class HabrDateParser
 {
-
     public static function parseArticleDate(string $rawDate): \DateTimeInterface
     {
         // see bug https://bugs.php.net/bug.php?id=51950

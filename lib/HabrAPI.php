@@ -119,8 +119,7 @@ class HabrAPI
 
             if (preg_match('/^>\s*(.+)/', $p, $matches)) {
                 $collectBlock[] = $matches[1];
-            }
-            else {
+            } else {
                 if (count($collectBlock)) {
                     $md["content"][] = $this->renderBlockquote($collectBlock);
                     $collectBlock = [];
@@ -137,7 +136,8 @@ class HabrAPI
         return $json;
     }
 
-    protected function renderParagraph(string $p): array {
+    protected function renderParagraph(string $p): array
+    {
         return [
                 "type" => "paragraph",
                 "content" => [
@@ -149,16 +149,16 @@ class HabrAPI
         ];
     }
 
-    protected function renderBlockquote(array $quotes): array {
+    protected function renderBlockquote(array $quotes): array
+    {
         return [
                 "type" => "blockquote",
                 "content" => array_map(
-                    function($q) {
+                    function ($q) {
                         return $this->renderParagraph($q);
                     },
                     $quotes
                 )
         ];
     }
-
 }
